@@ -1,51 +1,35 @@
 package pt.pa.adts;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
  * @author patricia.macedo
  * @param <E> type of elements of the tree
  */
-public class LinkedTree<E> implements Tree<E> {
+public class TreeLinked<E> implements Tree<E> {
 
     //** TreeNode implemented as a inner class at the end **/
     
     private TreeNode root; 
 
-    public LinkedTree() {
+    public TreeLinked() {
      this.root=null;
     }
    
-    public LinkedTree(E root) {
+    public TreeLinked(E root) {
         this.root = new TreeNode(root);
     }
 
     @Override
     public int size() {
-        if (root == null) {
-            return 0;
-        } else {
-            return size(root);
-        }
+        throw new NotImplementedException();
     }
 
-    public int size(TreeNode treeNode) {
-       
-        if (treeNode.children.isEmpty()) {
-            return 1;
-        } else {
-            int s = 1;
-            for (TreeNode child : treeNode.children) {
-                s += size(child);
-            }
-            return s;
-        }
-
-    }
 
     @Override
     public boolean isEmpty() {
@@ -91,16 +75,14 @@ public class LinkedTree<E> implements Tree<E> {
 
     @Override
     public boolean isExternal(Position<E> position) throws InvalidPositionException {
-        TreeNode aux = checkPosition(position);
-        return aux.children.isEmpty();
+        throw new NotImplementedException();
     }
 
     @Override
     public boolean isRoot(Position<E> position) throws InvalidPositionException {
-        TreeNode aux = checkPosition(position);
-        return this.root == aux;
-
+        throw new NotImplementedException();
     }
+
 
     @Override
     public Position<E> insert(Position<E> parent, E elem)
@@ -111,59 +93,28 @@ public class LinkedTree<E> implements Tree<E> {
     }
 
     @Override
+    public E remove(Position<E> position) throws InvalidPositionException {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public int height() {
+        throw new NotImplementedException();
+    }
+
+    @Override
     public Position<E> insert(Position<E> parent, E elem, int order)
             throws BoundaryViolationException, InvalidPositionException {
         TreeNode aux = checkPosition(parent);
         if (order < 0 || order > aux.children.size()) {
             throw new BoundaryViolationException("Fora de limites");
         }
-        return aux.addChild(elem, order);
+        TreeNode node = new TreeNode(elem,aux);
+        node.children.add(order, node);
+        return node;
 
     }
 
-    @Override
-    public E remove(Position<E> position) throws InvalidPositionException {
-        TreeNode aux = checkPosition(position);
-        E elem = aux.element;
-        aux.parent.removeChild(aux);
-
-        return elem;
-    }
-
-    public Iterable<Position<E>> breadthOrder() {
-        List<TreeNode> nodeQueue = new LinkedList<>();
-        List<Position<E>> elements = new LinkedList<>();
-        if (isEmpty()) {
-            return elements;
-        }
-        nodeQueue.add(this.root);
-        while (!nodeQueue.isEmpty()) {
-            TreeNode node = nodeQueue.remove(0);
-            elements.add(node);
-            for (TreeNode child : node.children) {
-                nodeQueue.add(child);
-            }
-        }
-
-        return elements;
-    }
-
-    public Iterable<Position<E>> depthOrder() {
-        List<TreeNode> nodeStack = new LinkedList<>();
-        List<Position<E>> elements = new LinkedList<>();
-        if (isEmpty()) {
-            return elements;
-        }
-        nodeStack.add(0, this.root);
-        while (!nodeStack.isEmpty()) {
-            TreeNode node = nodeStack.remove(0);
-            elements.add(node);
-            for (TreeNode child : node.children) {
-                nodeStack.add(0, child);
-            }
-        }
-        return elements;
-    }
     /*
         auxiliary method to check if Position is valid and cast to a treeNode
      */
@@ -184,13 +135,9 @@ public class LinkedTree<E> implements Tree<E> {
         }
     }
 
-    @Override
+        @Override
     public Iterable<Position<E>> positions() {
-        ArrayList<Position<E>> lista = new ArrayList<>();
-        if (!isEmpty()) {
-            positions(root, lista);
-        }
-        return lista;
+        throw new NotImplementedException();
     }
 
     /** auxiliary recursive method for elements() method**/
@@ -211,39 +158,6 @@ public class LinkedTree<E> implements Tree<E> {
             elements(root, lista);
         }
         return lista;
-    }
-    /** auxiliary recursive method for positions() method**/
-    private void positions(Position<E> position, ArrayList<Position<E>> lista) {
-
-        for (Position<E> w : children(position)) {
-            positions(w, lista);
-        }
-        lista.add(lista.size(), position); // visit (position)
-    }
-
-   
-
-    private int height(TreeNode treeNode) {
-        if (isExternal(treeNode)) {
-            return 1;
-        }
-        int maximo = 0;
-       for (TreeNode child : treeNode.children) {
-            int h = height(child);
-            if (maximo < h) {
-                maximo = h;
-            }
-        }
-        return 1 + maximo;
-
-    }
-
-    public int height() {
-        int h = 0;
-        if (!isEmpty()) {
-            h = height(root);
-        }
-        return h;
     }
 
     private String toStringPreOrder(Position<E> position) {
@@ -310,29 +224,6 @@ public class LinkedTree<E> implements Tree<E> {
             }
             return element;
         }
-
-        /**
-         * auxiliary method
-         * @param elem -element of the node
-         * @param order - order of the child node in the children list
-         * @return the TreeNode created and addes to the list of children
-         */
-        TreeNode addChild(E elem, int order) {
-            TreeNode node = new TreeNode(elem, this);
-            children.add(order, node);
-            return node;
-        }
-
-        /**
-         * auxiliary method
-         * @param node - the tree node to be removed from the list of children
-         */
-        void removeChild(TreeNode node) {
-            if (!children.remove(node)) {
-                throw new InvalidPositionException();
-            }
-        }
-
     }
 
 }

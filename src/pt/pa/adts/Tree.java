@@ -34,7 +34,7 @@ public interface Tree<E> {
    *
    * @param position of the treeNode to replace the element
    * @param elem the new element
-   * @return the elemnet replaced
+   * @return the element replaced
    * @throws InvalidPositionException if position is null or is not referring to a treeNode
    */
   public E replace(Position<E> position, E elem)
