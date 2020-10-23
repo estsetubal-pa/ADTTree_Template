@@ -16,7 +16,9 @@ Os exercícios solicitados são os seguintes:
 
 3. Compile e teste o programa fornecido.
 
-4. Considere o algoritmo Breath-first para percorrer a árvore em largura,    por níveis.
+## ADT Tree | Exercícios de implementação adicionais
+
+1   Considere o algoritmo Breath-first para percorrer a árvore em largura,    por níveis.
 ```java 
    BFS(Tree)
    Coloque a raiz da árvore na fila
@@ -26,4 +28,19 @@ Os exercícios solicitados são os seguintes:
    	   para todo o f nó filho de n 
          		coloque f na fila
    ```
-   Implemente na classe TreeLinked o método Breath-first que devolve uma Colecao Iteravel com os elementos da árvore ordenado segundo o algoritmo Breath-first.
+   Implemente na classe TreeLinked o método Breath-first que devolve uma Colecao Iterével com os elementos da árvore ordenado segundo o algoritmo Breath-first.
+
+2 O método checkPosition fornecido não está a validar se à posição fornecida pertence à árvore.
+
+2.1 Implemente um método auxiliar  (denominado belongs) que dado um nó verifica se este pertence à arvore. 
+     Sugere-se a utilização do seguinte algoritmo:
+```java 
+    belongs(tree,node)
+		Enquanto  parent(node) <> NULL faça
+			node<-parent(node)
+		Se node=root(tree) 
+			retorna verdade
+          senão 
+			retorna falso
+ ```
+2.2 Altere o método checkPosition, para incluir esta validação.
