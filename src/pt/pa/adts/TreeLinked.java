@@ -84,13 +84,39 @@ public class TreeLinked<E> implements Tree<E> {
     }
 
 
-    @Override
     public Position<E> insert(Position<E> parent, E elem)
             throws BoundaryViolationException, InvalidPositionException {
-
-        TreeNode aux = checkPosition(parent);
-        return insert(parent, elem, aux.children.size());
+        if(isEmpty()){
+            if( parent!= null) throw new InvalidPositionException("Pai não é nulo");
+            this.root = new TreeNode(elem);
+            return root;
+        }
+        TreeNode  parentNode = checkPosition(parent);
+        TreeNode node = new TreeNode(elem, parentNode);
+        parentNode.children.add(node);
+        return node;
     }
+
+
+    @Override
+    public Position<E> insert(Position<E> parent, E elem, int order)
+            throws BoundaryViolationException, InvalidPositionException {
+        if(isEmpty()){
+            if( parent!= null) throw new InvalidPositionException("Pai não é nulo");
+            if (order != 0 ) throw new BoundaryViolationException("Fora de limites");
+            this.root = new TreeNode(elem);
+            return root;
+        }
+        TreeNode parentNode = checkPosition(parent);
+        if (order < 0 || order > parentNode.children.size()) {
+            throw new BoundaryViolationException("Fora de limites");
+        }
+        TreeNode node = new TreeNode(elem, parentNode);
+        parentNode.children.add(order, node);
+        return node;
+
+    }
+
 
     @Override
     public E remove(Position<E> position) throws InvalidPositionException {
@@ -102,18 +128,7 @@ public class TreeLinked<E> implements Tree<E> {
         throw new NotImplementedException();
     }
 
-    @Override
-    public Position<E> insert(Position<E> parent, E elem, int order)
-            throws BoundaryViolationException, InvalidPositionException {
-        TreeNode aux = checkPosition(parent);
-        if (order < 0 || order > aux.children.size()) {
-            throw new BoundaryViolationException("Fora de limites");
-        }
-        TreeNode node = new TreeNode(elem,aux);
-        node.children.add(order, node);
-        return node;
 
-    }
 
     /*
         auxiliary method to check if Position is valid and cast to a treeNode
