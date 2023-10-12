@@ -121,10 +121,4 @@ public interface Tree<E> {
 
   public E remove(Position<E> position)throws InvalidPositionException;
 
-  /**
-   *
-   * @return the height of the tree ( -1  if is empty, 0 if has just the root) that is equal to the higher level of the tree
-   */
-  public int height();
-}
-
+  
