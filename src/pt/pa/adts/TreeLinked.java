@@ -1,6 +1,6 @@
 package pt.pa.adts;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -80,7 +80,7 @@ public class TreeLinked<E> implements Tree<E> {
 
     @Override
     public boolean isRoot(Position<E> position) throws InvalidPositionException {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
 
@@ -120,16 +120,10 @@ public class TreeLinked<E> implements Tree<E> {
 
     @Override
     public E remove(Position<E> position) throws InvalidPositionException {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
-    @Override
-    public int height() {
-        throw new NotImplementedException();
-    }
-
-
-
+   
     /*
         auxiliary method to check if Position is valid and cast to a treeNode
      */
@@ -152,7 +146,7 @@ public class TreeLinked<E> implements Tree<E> {
 
         @Override
     public Iterable<Position<E>> positions() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /** auxiliary recursive method for elements() method**/
