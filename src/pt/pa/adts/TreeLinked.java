@@ -27,7 +27,7 @@ public class TreeLinked<E> implements Tree<E> {
 
     @Override
     public int size() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
 
@@ -75,7 +75,7 @@ public class TreeLinked<E> implements Tree<E> {
 
     @Override
     public boolean isExternal(Position<E> position) throws InvalidPositionException {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     @Override
