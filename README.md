@@ -28,7 +28,7 @@ Os exercícios solicitados são os seguintes:
    	   para todo o f nó filho de n 
          		coloque f na fila
    ```
-   Implemente na classe TreeLinked o método Breath-first que devolve uma Colecao Iterével com os elementos da árvore ordenado segundo o algoritmo Breath-first.
+   Implemente na classe TreeLinked o método Breath-first que devolve uma Colecao Iterável com os elementos da árvore ordenado segundo o algoritmo Breath-first.
 
 2 O método checkPosition fornecido não está a validar se à posição fornecida pertence à árvore.
 
