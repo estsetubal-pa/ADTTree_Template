@@ -7,14 +7,25 @@ no contexto da unidade curricular de *Programação Avançada* - ESTSetúbal.
 
 Os exercícios solicitados são os seguintes:
 
-## ADT Tree | Exercícios de implementação
+## ADT Tree | Exercícios de implementação (Base)
 
 1. Faça *clone* deste projeto base **ADTTree_Template** (projeto **IntelliJ**) do *GitHub*:
 
-2. Forneça o código dos métodos por implementar, i.e., os que estão a  lançar NotImplementedException ;
-	Nota: Em relação ao método size, sugere-se que reveja a  implementação realizada pra a BST
+2. Observe o código da interface Tree, e da classe TreeLinked.
+3. Observe o código da classe TadTreeMain e
+- Complete o método `public E remove(Position<E> position) throws InvalidPositionException`
+4. Altere o método main de forma a remover alguns nós da árvore e corra novamente o main.
+5. Forneça o código dos métodos 
+-  `public boolean isExternal(Position<E> position) throws InvalidPositionException `
+- `public boolean isRoot(Position<E> position) throws InvalidPositionException `
+6. Crie testes unitários para testar os dois métodos anteriores. 
+**Nota**: Poderá usar a estrutura da árvore fornecida no main, como base, para testar os métodos criados.
 
-3. Compile e teste o programa fornecido.
+## ADT Tree | Exercícios de implementação (Recursividade)
+7. Forneça o código dos métodos por implementar, i.e., os que estão a  lançar NotImplementedException ;
+	
+8. Compile e teste o programa fornecido.
+9. Implemente o método `public bolean exits(E elem)`que verifica se um elemento existe.
 
 ## ADT Tree | Exercícios de implementação adicionais
 
